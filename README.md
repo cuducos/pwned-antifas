@@ -31,3 +31,10 @@ $ npm run build
 $ open dist/index.html
 ```
 
+The app works off-line and is just two files: `dist/index.html` and `dist/app.js`.
+
+## For Elm developers
+
+```console
+$ npm start
+```

@@ -10,9 +10,14 @@ type Msg
 
 isListed : Model -> String -> Model
 isListed model value =
+    let
+        cropped : String
+        cropped =
+            String.slice 0 100 value
+    in
     { model
-        | hash = value
-        , found = List.member value model.hashes
+        | hash = cropped
+        , found = List.member cropped model.hashes
     }
 
 
