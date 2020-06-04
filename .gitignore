@@ -1,0 +1,6 @@
+*.pyc
+__pycache__/
+dist/app.js
+dist/index.html
+elm-stuff/
+node_modules/

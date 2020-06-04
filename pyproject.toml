@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "pwned-antifas"
+version = "0.0.1"
+description = ""
+authors = ["Lucas Lago <lagolucas@users.noreply.github.com>", "Eduardo Cuducos <cuducos@users.noreply.github.com>"]
+license = "GPL-3.0"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+click = "^7.1.2"
+tika = "^1.24"
+
+[tool.poetry.dev-dependencies]
+ipdb = "^0.13.2"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
