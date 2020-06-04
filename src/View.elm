@@ -15,7 +15,7 @@ view model =
         status =
             if String.length model.hash < 100 then
                 { title = ""
-                , text = "Informe os 100 caracteres do hash do seu nome (pode colar tudo qgue a gente descarta o que sobrar)."
+                , text = "Informe os 100 caracteres do hash do seu nome (pode colar tudo gue a gente descarta o que sobrar)."
                 , class = "alert alert-secondary"
                 }
 
