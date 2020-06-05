@@ -7,27 +7,26 @@ import Html.Events exposing (onInput)
 import Model exposing (Model)
 import Update exposing (Msg(..))
 
-
 view : Model -> Html Msg
 view model =
     let
         status : { title : String, text : String, class : String }
         status =
-            if String.length model.hash < 100 then
+            if String.length model.hash < 100 || model.fullName == "" then
                 { title = ""
-                , text = "Informe os 100 caracteres do hash do seu nome (pode colar tudo gue a gente descarta o que sobrar)."
+                , text = "Informe seu nome completo."
                 , class = "alert alert-secondary"
                 }
 
             else if model.found then
                 { title = "Cuidado"
-                , text = "Encontramos no dossiê hashes com os mesmos caracteres que você informou."
+                , text = "Encontramos no dossiê hashes a partir do seu nome completo informado."
                 , class = "alert alert-danger"
                 }
 
             else
                 { title = "Boa notícia"
-                , text = "Não existem hashes que iniciam com os mesmos caracteres do hash que você digitou."
+                , text = "Não existem hashes que iniciem com os mesmos caracteres do hash a partir do seu nome completo informado."
                 , class = "alert alert-success"
                 }
 
@@ -45,6 +44,6 @@ view model =
         []
         [ p
             []
-            [ input [ size 40, type_ "text", onInput UpdateValue ] [] ]
+            [ input [ size 40, type_ "text", onInput RequestHash ] [] ]
         , div [ class status.class ] message
         ]

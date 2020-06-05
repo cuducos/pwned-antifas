@@ -2,15 +2,15 @@ module Main exposing (main)
 
 import Browser
 import Model exposing (Model)
-import Update exposing (Msg, update)
+import Update exposing (Msg, update, subscriptions)
 import View exposing (view)
-
 
 init : List String -> ( Model, Cmd Msg )
 init hashes =
     ( { found = False
       , hashes = hashes
       , hash = ""
+      , fullName = ""
       }
     , Cmd.none
     )
@@ -22,5 +22,5 @@ main =
         { init = init
         , view = view
         , update = update
-        , subscriptions = \_ -> Sub.none
+        , subscriptions = subscriptions
         }

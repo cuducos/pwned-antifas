@@ -12,38 +12,38 @@
   </head>
   <body>
     <div class="container">
-
       <h1>Checar se fui exposto no dossiê de Anti-fascistas</h1>
-      <p>No dia 3 de junho de 2020 ficamos sabendo que um dossiê com possíveis anti-fascistas foi exposto na internet.</p>
-      <p>Para checar se seu nome está no dossiê sem correr o risco de expor seus dados use esse serviço.</p>
+      <p>No dia 3 de junho de 2020, ficamos sabendo que um dossiê com possíveis anti-fascistas foi exposto na internet.</p>
+      <p>A partir do documento PDF obtido, construímos uma lista de <em>hashes</em> a partir dos nomes mencionados,
+      de forma que apenas os <em>hashes</em> estão disponibilizados nessa página. Embora o nome completo seja solicitado
+      a seguir, o mesmo não é trafegado na internet, muito menos exposto a outros serviços.</p>
 
-      <h2>Antes de começar<br><strong>Não</strong> digite seus dados pessoais em sites que você não conhece.</h2>
-      <p>Esse site foi construído para funcionar sem necessitar de dados pessoais, apenas de parte do hash dos mesmos.</p>
-
-      <h2>1. Gere um <em>hash</em> com o seu nome completo</h2>
-      <p>Utilizamos <code>sha512</code> para não expor seu nome. Você pode usar o <a href="https://duckduckgo.com">Duck Duck Go</a> para gerar um hash com o seu nome. É só colocar SHA-512 e o seu nome no campo de busca.</p>
-      <p>Aqui um exemplo com o nome <a href="https://duckduckgo.com/?q=sha-512+Jo%C3%A3o+da+Silva&atb=v181-3_j&ia=answer">"João da Silva".</a></p>
-      <p>Vale a pena gerar com variações de maiúscula e minúscula, com ou sem acento, etc.</p>
-
-      <h2>2. Informe os 100 primeiros caracteres do seu <em>hash</em></h2>
-      <p>É só colar, a gente corta os caracteres que vierem a mais:</p>
+      <h2>Informe o seu nome completo</h2>
+      <p>A partir do seu nome completo é criado um <em>hash</em> (com o algoritmo SHA-512) para verificarmos se o mesmo se encontra na base de <em>hashes</em>.</p>
+      <p>Seu nome não será exposto ou enviado através da internet. Os <em>hashes</em> para análise já se encontram nesta página.</p>
       <div id="pwned-antifas"></div>
 
-      <h2>Por que <em>hashes</em></h2>
+      <h2>Por que <em>hashes</em>?</h2>
       <p>Esse site não contém os dados presentes no dossiê, somente parte dos hashes dos nomes.</p>
-      <p>Isso garante que a publicação desse site não expõe as pessoas a um risco ainda maior.</p>
-      <p>O algoritmo usado foi o <code>sha512</code>./</p>
-      <p>Para verificar se os seus dados estão presentes, insira no campo os oito primeiros caracteres do hash do seu nome completo.</p>
-      <p>Essa é a única forma de garantir que seus dados não estão sendo compartilhados de forma imprópria.</p>
+      <p>Isso garante que a publicação desse site não exponha as pessoas a um risco ainda maior.</p>
+      <p>O algoritmo usado foi o <a href="https://pt.wikipedia.org/wiki/SHA-2"><code>SHA-512</code></a>, o qual garante que os nomes sejam ofuscados e sejam carregados nessa página de forma anônima.</p>
+      <p>Essa é a única forma de garantir que seus dados não estão sendo compartilhados de forma imprópria, mas, sim, de forma segura e anônima.</p>
 
       <h2>O código é aberto?</h2>
-      <p><a href="https://github.com/cuducos/pwned-antifas">Sim</a>, mas não expomos o PDF do dossiê para não dar mais visibilidade e expor ainda mais as pessoas.</p>
-
+      <p><a href="https://github.com/cuducos/pwned-antifas">Sim</a>! Embora o PDF do dossiê não seja exposto, para não dar mais visibilidade e expor ainda mais as pessoas mencionadas,
+      você pode conferir como essa ferramenta foi criada e auditar (ou modificar) <a href="https://github.com/cuducos/pwned-antifas">a solução proposta</a>.</p>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha512/0.8.0/sha512.min.js" integrity="sha256-vmT+cGA/37TLJdcbn/L89qtu3RA/LEozREmaqY+pg4E=" crossorigin="anonymous"></script>
     <script>
       var app = Elm.Main.init({
         node: document.getElementById('pwned-antifas'),
-        flags: /* insert hashes here */
+        flags: [null]
+      });
+
+      app.ports.requestHash.subscribe(function(message) {
+        console.log("received: " + message);
+        console.log("sending: " + sha512(message));
+        app.ports.receiveHash.send(sha512(message));
       });
     </script>
   </body>

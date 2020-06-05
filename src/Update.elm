@@ -1,12 +1,12 @@
-module Update exposing (Msg(..), update)
+module Update exposing (Msg(..), update, subscriptions)
 
 import Dict
 import Model exposing (Model)
-
+import Ports exposing (requestHash, receiveHash)
 
 type Msg
-    = UpdateValue String
-
+    = RequestHash String
+    | ReceiveHash String
 
 isListed : Model -> String -> Model
 isListed model value =
@@ -20,9 +20,20 @@ isListed model value =
         , found = List.member cropped model.hashes
     }
 
+updateFullName model value =
+    {
+        model
+        | fullName = value
+    }
+
+subscriptions : Model -> Sub Msg
+subscriptions _ =
+    receiveHash ReceiveHash
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        UpdateValue value ->
-            ( isListed model value, Cmd.none )
+        RequestHash value ->
+            ( updateFullName model value, requestHash value )
+        ReceiveHash hash ->
+            ( isListed model hash, Cmd.none )

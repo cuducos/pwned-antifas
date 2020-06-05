@@ -18,7 +18,7 @@ $ npm install
 ## Creating `dist/index.html`
 
 ```console
-$ poetry run python create_html.py <PATH TO PDF FILE>
+$ poetry run python create_html.py [<PATH TO PDF FILE>]
 ```
 
 ## Creating `dist/app.js`
