@@ -13,34 +13,47 @@
   <body>
     <div class="container">
 
-      <h1>Checar se fui exposto no dossiê de Anti-fascistas</h1>
-      <p>No dia 3 de junho de 2020 ficamos sabendo que um dossiê com possíveis anti-fascistas foi exposto na internet.</p>
-      <p>Para checar se seu nome está no dossiê sem correr o risco de expor seus dados use esse serviço.</p>
+      <h1>Veja se você foi exposto no dossiê de antifascistas com segurança</h1>
+      <p>No dia 3 de junho de 2020, um dossiê com possíveis antifascistas foi exposto na internet.</p>
+      <p>Criamos esta ferramenta para você verificar se seu nome está no dossiê.</p>
+      <ul>
+         <li>Sem correr o risco de expor seus dados.</li>
+         <li>Com segurança e sigilo.</li>
+         <li>Sem divulgar o dossiê.</li>
+      </ul>
 
-      <h2>Antes de começar<br><strong>Não</strong> digite seus dados pessoais em sites que você não conhece.</h2>
-      <p>Esse site foi construído para funcionar sem necessitar de dados pessoais, apenas de parte do hash dos mesmos.</p>
-
-      <h2>1. Gere um <em>hash</em> com o seu nome completo</h2>
-      <p>Utilizamos <code>sha512</code> para não expor seu nome. Você pode usar o <a href="https://duckduckgo.com">Duck Duck Go</a> para gerar um hash com o seu nome. É só colocar SHA-512 e o seu nome no campo de busca.</p>
-      <p>Aqui um exemplo com o nome <a href="https://duckduckgo.com/?q=sha-512+Jo%C3%A3o+da+Silva&atb=v181-3_j&ia=answer">"João da Silva".</a></p>
-      <p>Vale a pena gerar com variações de maiúscula e minúscula, com ou sem acento, etc.</p>
-
-      <h2>2. Informe os 100 primeiros caracteres do seu <em>hash</em></h2>
-      <p>É só colar, a gente corta os caracteres que vierem a mais:</p>
-      <div id="pwned-antifas"></div>
+      <h2>Atenção: <br><strong>Nunca</strong> digite seus dados pessoais em sites que você não conhece.</h2>
       
-      <h2>3. Repita com variações do seu nome</h2>
-      <p>Como há a diferença entre maiúsculas e minúsculas, recomendamos que teste mais de uma vez, por exemplo "João da Silva" e "JOÃO DA SILVA".</p>
+      <h1>Passo-a-passo</h1>
 
-      <h2>Por que <em>hashes</em></h2>
-      <p>Esse site não contém os dados presentes no dossiê, somente parte dos hashes dos nomes.</p>
-      <p>Isso garante que a publicação desse site não expõe as pessoas a um risco ainda maior.</p>
-      <p>O algoritmo usado foi o <code>sha512</code>./</p>
-      <p>Para verificar se os seus dados estão presentes, insira no campo os oito primeiros caracteres do hash do seu nome completo.</p>
-      <p>Essa é a única forma de garantir que seus dados não estão sendo compartilhados de forma imprópria.</p>
+      <h2>1. Gere um <em>hash</em> do seu nome</h2>
+      <p>Vá até <a href="https://duckduckgo.com">Duck Duck Go</a>.</p>
+      <p>Digite no campo de busca: "SHA-512 Seu Nome Completo"</p>
+      <p>Pressione <em>enter</em>.</p>
+      
+      <p>Exemplo:</p>
+      <p><em>Hash</em> gerado com o nome <a href="https://duckduckgo.com/?q=sha-512+Jo%C3%A3o+da+Silva&atb=v181-3_j&ia=answer">"João da Silva".</a></p>
 
+      <h2>2. Copie o <em>hash</em> gerado</h2>
+      <p>Selecione o <em>hash</em>, a combinação única de letras e números.</p>
+      <p>Copie o <em>hash</em></p>
+      
+      <p>Exemplo:</p>
+      <code>fab687418ca251d4cfb079de71d44200ef56d637982b56d2df2d1f78ffc6106f8a2fee050f9c1e0b359e618ba890ef0d0e0b3e428186d95077d185b23a32ecd9</code>
+      
+      <h2>3. Cole aqui o <em>hash</em do seu nome</h2>
+      <div id="pwned-antifas"></div>
+      <p>Usamos apenas os 100 primeiros caracteres, se você colar a mais, nós cortaremos o excedente.</p>
+
+      <h2>Por que <em>hash</em>?</h2>
+      <p>Funções <em>hash</em> são úteis para resumirem dados. Através dos hashes, podemos comparar dados grandes ou secretos.</p>
+      <p>Aqui, comparamos com segurança o seu nome com os nomes do dossiê sem precisar expor seus dados, através dos <em>hashes</em>.</p>
+      <p>Não armazenamos, nem compartilhamos, os dados presentes no dossiê, somente parte dos <em>hashes</em> dos nomes.</p>
+      <p>Isso garante que não expomos as pessoas a um risco ainda maior.</p>
+      <p>Usamos o algoritmo <code>sha512.</code></p>
+        
       <h2>O código é aberto?</h2>
-      <p><a href="https://github.com/cuducos/pwned-antifas">Sim</a>, mas não expomos o PDF do dossiê para não dar mais visibilidade e expor ainda mais as pessoas.</p>
+      <p><a href="https://github.com/cuducos/pwned-antifas">Sim</a>, mas não expomos o dossiê para não dar mais visibilidade e expor ainda mais as pessoas.</p>
 
     </div>
     <script>
