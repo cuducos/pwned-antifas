@@ -5,8 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- Modesto CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/modesto/modesto.min.css" crossorigin="anonymous">
+    <style>
+      .alert {
+        border: 1px solid var(--color-bg-darker);
+        background-color: var(--color-bg-lighter);
+        padding: 1em;
+      }
+    </style>
     <title>Pwned Antifas</title>
     <script src="app.js"></script>
   </head>
@@ -21,44 +28,49 @@
          <li>Com segurança e sigilo.</li>
          <li>Sem divulgar o dossiê.</li>
       </ul>
+      <hr>
+      <h4>⚠️ Atenção: <strong>Nunca</strong> digite seus dados pessoais em sites que você não conhece.</h4>
+      <hr>
 
-      <h2>Atenção: <br><strong>Nunca</strong> digite seus dados pessoais em sites que você não conhece.</h2>
-      
-      <h1>Passo-a-passo</h1>
+      <h2>Passo-a-passo</h2>
 
-      <h2>1. Gere um <em>hash</em> do seu nome</h2>
-      <p>Vá até <a href="https://duckduckgo.com">Duck Duck Go</a>.</p>
-      <p>Digite no campo de busca: "SHA-512 Seu Nome Completo"</p>
-      <p>Pressione <em>enter</em>.</p>
-      
-      <p>Exemplo:</p>
-      <p><em>Hash</em> gerado com o nome <a href="https://duckduckgo.com/?q=sha-512+Jo%C3%A3o+da+Silva&atb=v181-3_j&ia=answer">"João da Silva".</a></p>
 
-      <h2>1.1 Nome em minúsculo e sem acentuação</h2>
-      <p>Para reduzir as chances de nomes com grafias erradas serem ignorados, o sistema agora contém hashes para os nomes com todas as letras em minúsculo e sem acentuação.</p>
-      <p>Ou seja, você pode fazer o que foi explicado no passo um transformando "João da Silva" em "joao da silva".</p>
+      <p>ℹ️ Para reduzir as chances de nomes com grafias erradas serem ignorados, o sistema agora contém hashes para os nomes com todas as letras em <strong>minúsculo e sem acentuação</strong>.</p>
+      <p>Ou seja, o nome "João da Silva" deve ser escrito como: <strong>"joao da silva"</strong>.</p>
 
-      <h2>2. Copie o <em>hash</em> gerado</h2>
-      <p>Selecione o <em>hash</em>, a combinação única de letras e números.</p>
-      <p>Copie o <em>hash</em></p>
-      
-      <p>Exemplo:</p>
-      <code>fab687418ca251d4cfb079de71d44200ef56d637982b56d2df2d1f78ffc6106f8a2fee050f9c1e0b359e618ba890ef0d0e0b3e428186d95077d185b23a32ecd9</code>
-      
-      <h2>3. Cole aqui o <em>hash</em do seu nome</h2>
+      <h3>1. Gere um <em>hash</em> do seu nome</h3>
+      <ol>
+        <li>Vá até <a href="https://duckduckgo.com">Duck Duck Go</a>.</li>
+        <li>Digite no campo de busca: "SHA-512 Seu Nome Completo" – <strong>Tudo em minúsculo em sem acentuação</strong>.</li>
+        <li>Pressione <kbd>enter</kbd>.</li>
+      </ol>
+
+      <p>
+        Exemplo: <em>Hash</em> gerado com o nome <a href="https://duckduckgo.com/?q=sha-512+Jo%C3%A3o+da+Silva&atb=v181-3_j&ia=answer">"João da Silva".</a>
+        <code>fab687418ca251d4cfb079de71d44200ef56d637982b56d2df2d1f78ffc6106f8a2fee050f9c1e0b359e618ba890ef0d0e0b3e428186d95077d185b23a32ecd9</code>
+      </p>
+
+      <h3>2. Copie o <em>hash</em> gerado</h3>
+      <ol>
+        <li>Selecione o <em>hash</em>, a combinação única de letras e números.</li>
+        <li>Copie o <em>hash</em></li>
+      </ol>
+
+      <h3>3. Cole aqui o <em>hash</em> do seu nome</h3>
       <div id="pwned-antifas"></div>
-      <p>Usamos apenas os 100 primeiros caracteres, se você colar a mais, nós cortaremos o excedente.</p>
-      
+      <p class="alert">Usamos apenas os 100 primeiros caracteres, se você colar a mais, nós cortaremos o excedente.</p>
+
       <img src="tutorial.gif" width="75%">
 
-      <h2>Por que <em>hash</em>?</h2>
-      <p>Funções <em>hash</em> são úteis para resumirem dados. Através dos hashes, podemos comparar dados grandes ou secretos.</p>
-      <p>Aqui, comparamos com segurança o seu nome com os nomes do dossiê sem precisar expor seus dados, através dos <em>hashes</em>.</p>
-      <p>Não armazenamos, nem compartilhamos, os dados presentes no dossiê, somente parte dos <em>hashes</em> dos nomes.</p>
-      <p>Isso garante que não expomos as pessoas a um risco ainda maior.</p>
-      <p>Usamos o algoritmo <code>sha512.</code></p>
-        
-      <h2>O código é aberto?</h2>
+      <h3>Por que <em>hash</em>?</h3>
+      <ol>
+        <li>Funções <em>hash</em> são úteis para resumirem dados. Através dos hashes, podemos comparar dados grandes ou secretos.</li>
+        <li>Aqui, comparamos com segurança o seu nome com os nomes do dossiê sem precisar expor seus dados, através dos <em>hashes</em>.</li>
+        <li>Não armazenamos, nem compartilhamos, os dados presentes no dossiê, somente parte dos <em>hashes</em> dos nomes.</li>
+        <li>Isso garante que não expomos as pessoas a um risco ainda maior.</li>
+        <li>Usamos o algoritmo <code>sha512.</code></li>
+      </ol>
+      <h3>O código é aberto?</h3>
       <p><a href="https://github.com/cuducos/pwned-antifas">Sim</a>, mas não expomos o dossiê para não dar mais visibilidade e expor ainda mais as pessoas.</p>
 
     </div>
