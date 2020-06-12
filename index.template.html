@@ -5,14 +5,32 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Modesto CSS -->
+    <!-- Modesto CSS. Documentation: https://modesto.netlify.app/ -->
     <link rel="stylesheet" href="https://unpkg.com/modesto/modesto.min.css" crossorigin="anonymous">
     <style>
       .alert {
-        border: 1px solid var(--color-bg-darker);
-        background-color: var(--color-bg-lighter);
+        border-radius: var(--border-radius);
         padding: 1em;
+        margin-bottom: 1em;
       }
+        .alert *{
+          margin: 0;
+        }
+      .alert-secondary {
+        background-color: var(--color-bg-lighter);
+      }
+      .alert-danger {
+        background-color: #f8d7da;
+      }
+        .alert-danger * {
+          color: #721c24;
+        }
+      .alert-success {
+        background-color: #d4edda;
+      }
+        .alert-success * {
+          color: #155724;
+        }
     </style>
     <title>Pwned Antifas</title>
     <script src="app.js"></script>
@@ -58,9 +76,9 @@
 
       <h3>3. Cole aqui o <em>hash</em> do seu nome</h3>
       <div id="pwned-antifas"></div>
-      <p class="alert">Usamos apenas os 100 primeiros caracteres, se você colar a mais, nós cortaremos o excedente.</p>
+      <p>Usamos apenas os 100 primeiros caracteres, se você colar a mais, nós cortaremos o excedente.</p>
 
-      <img src="tutorial.gif" width="75%">
+      <a href="tutorial.gif"><img src="tutorial.gif"></a>
 
       <h3>Por que <em>hash</em>?</h3>
       <ol>
