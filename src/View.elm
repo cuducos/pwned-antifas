@@ -20,13 +20,13 @@ view model =
                 }
 
             else if model.found then
-                { title = "Cuidado"
+                { title = "🛑 Cuidado"
                 , text = "Encontramos no dossiê hashes com os mesmos caracteres que você informou."
                 , class = "alert alert-danger"
                 }
 
             else
-                { title = "Boa notícia"
+                { title = "✅ Boa notícia"
                 , text = "Não existem hashes que iniciam com os mesmos caracteres do hash que você digitou."
                 , class = "alert alert-success"
                 }
